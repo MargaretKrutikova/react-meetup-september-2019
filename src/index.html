@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ReasonReact Demo</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        padding-top: 12px;
+      }
+      .nav-link {
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 20px;
+        color: black;
+        text-decoration: none;
+        transition: color ease 0.3s;
+        text-decoration: underline;
+      }
+      .nav-link:hover {
+        color: #666;
+      }
+      .task-container {
+        display: flex;
+        flex-direction: column;
+        font-size: 32px;
+        align-items: flex-start;
+        width: 400px;
+      }
+      .task-row {
+        display: flex;
+        font-size: 32px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+        width: 100%;
+        text-transform: uppercase;
+      }
+      .buttons-row {
+        display: flex;
+        align-self: flex-end;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        user-select: none;
+      }
+      label input[type="checkbox"] {
+        margin-right: 10px;
+      }
+      .task-row span:nth-child(1) {
+        margin-right: 15px;
+      }
+      .task-row span:nth-child(2) {
+        font-weight: 600;
+      }
+      .button:disabled {
+        opacity: 0.7;
+        cursor: default;
+      }
+      button {
+        align-self: flex-end;
+        outline: 0;
+        display: block;
+        border: 0;
+        cursor: pointer;
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        user-select: none;
+        justify-content: center;
+        /**/
+        min-width: 64px;
+        box-sizing: border-box;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+          box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+          border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        /**/
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+          0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+        color: black;
+        background-color: #f9f6f5;
+        padding: 8px 15px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .button:hover {
+        background-color: #e6e6e6;
+      }
+      .button:disabled:hover {
+        background-color: #f9f6f5;
+      }
+      .toggle-btn {
+        align-self: center;
+        margin-bottom: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="Index.js"></script>
+  </body>
+</html>
