@@ -11,7 +11,10 @@ let make = (~task) => {
     </button>
     {isOpen
        ? <>
-           <div className="task-row"> {str("Task: " ++ task)} </div>
+           <div className="task-row">
+             {str("Task:")}
+             <b> {str(task)} </b>
+           </div>
            <button> {React.string("Complete")} </button>
          </>
        : React.null}

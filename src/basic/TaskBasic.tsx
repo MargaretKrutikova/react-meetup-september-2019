@@ -6,7 +6,9 @@ type Props = {
 
 export const TaskBasic: React.FunctionComponent<Props> = ({ task }) => (
   <>
-    <div className="task-row">Task: {task}</div>
+    <div className="task-row">
+      Task: <b>{task}</b>
+    </div>
     <button>Complete</button>
   </>
 )

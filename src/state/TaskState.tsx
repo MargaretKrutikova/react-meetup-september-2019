@@ -15,8 +15,7 @@ export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
       </button>
       {isOpen ? (
         <div className="task-row">
-          <span>Task:</span>
-          <span>{task}</span>
+          Task: <b>{task}</b>
         </div>
       ) : null}
     </>

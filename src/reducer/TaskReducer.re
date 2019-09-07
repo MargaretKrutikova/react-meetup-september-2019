@@ -1,45 +1,49 @@
 let str = React.string;
 
 type state = {
-  isCompleted: bool,
+  completedAt: string,
   isNotified: bool,
 };
 
 type action =
-  | SetCompleted(bool)
-  | SetNotified(bool);
+  | CompleteTask(Js.Date.t)
+  | ToggleNotifications;
 
 let reducer = (state, action) => {
   switch (action) {
-  | SetCompleted(isCompleted) => {...state, isCompleted}
-  | SetNotified(isNotified) => {...state, isNotified}
+  | CompleteTask(date) => {
+      ...state,
+      completedAt: Js.Date.toLocaleTimeString(date),
+    }
+  | ToggleNotifications => {...state, isNotified: !state.isNotified}
   };
 };
 
-let initialState = {isCompleted: false, isNotified: false};
+let initialState = {completedAt: "", isNotified: false};
 
 [@react.component]
 let make = (~task) => {
   let (state, dispatch) = React.useReducer(reducer, initialState);
-  let {isNotified, isCompleted} = state;
+  let {isNotified, completedAt} = state;
 
   <>
-    <div className="task-row"> {str("Task: " ++ task)} </div>
+    <div className="task-row"> {str("Task:")} <b> {str(task)} </b> </div>
     <div className="task-row">
-      {str("Status: " ++ (isCompleted ? "Done" : "Open"))}
+      {str("Completed:")}
+      <b> {str(completedAt)} </b>
     </div>
     <div className="task-row">
       <label>
         <input
           type_="checkbox"
           checked=isNotified
-          onChange={_ => dispatch(SetNotified(!isNotified))}
+          onChange={_ => dispatch(ToggleNotifications)}
         />
         {str("Notify")}
       </label>
     </div>
-    <button onClick={_ => dispatch(SetCompleted(!isCompleted))}>
-      {str(isCompleted ? "Reopen" : "Complete")}
+    <button onClick={_ => dispatch(CompleteTask(Js.Date.make()))}>
+      {str("Complete")}
     </button>
   </>;
 };

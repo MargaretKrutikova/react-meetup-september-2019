@@ -5,34 +5,33 @@ type Props = {
 }
 
 type State = {
-  isCompleted: boolean
+  completedAt: string
   isNotified: boolean
 }
 
 type Action =
   | {
-      type: "SetCompleted"
-      isCompleted: boolean
+      type: "CompleteTask"
+      date: Date
     }
   | {
-      type: "SetNotified"
-      isNotified: boolean
+      type: "ToggleNotifications"
     }
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "SetCompleted":
-      return { ...state, isCompleted: action.isCompleted }
-    case "SetNotified":
-      return { ...state, isNotified: action.isNotified }
+    case "CompleteTask":
+      return { ...state, completedAt: action.date.toLocaleTimeString() }
+    case "ToggleNotifications":
+      return { ...state, isNotified: !state.isNotified }
   }
 }
 
-const initialState = { isCompleted: false, isNotified: false }
+const initialState: State = { completedAt: "", isNotified: false }
 
 export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  let { isNotified, isCompleted } = state
+  let { isNotified, completedAt: isCompleted } = state
 
   return (
     <>
@@ -46,19 +45,15 @@ export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
           <input
             type="checkbox"
             checked={isNotified}
-            onChange={_ =>
-              dispatch({ type: "SetNotified", isNotified: !isNotified })
-            }
+            onChange={_ => dispatch({ type: "ToggleNotifications" })}
           />
           Notify
         </label>
       </div>
       <button
-        onClick={_ =>
-          dispatch({ type: "SetCompleted", isCompleted: !isCompleted })
-        }
+        onClick={_ => dispatch({ type: "CompleteTask", date: new Date() })}
       >
-        {isCompleted ? "Reopen" : "Complete"}
+        Complete
       </button>
     </>
   )
