@@ -14,6 +14,7 @@ let make = () => {
       <NavLink href="/state"> {str("State")} </NavLink>
       <NavLink href="/reducer"> {str("Reducer")} </NavLink>
       <NavLink href="/interop"> {str("Interop")} </NavLink>
+      <NavLink href="/graphql"> {str("GraphQL")} </NavLink>
     </header>
     <main>
       <div className="task-container">
@@ -22,6 +23,7 @@ let make = () => {
          | ["state"] => <TaskState task />
          | ["reducer"] => <TaskReducer task />
          | ["interop"] => <TaskInterop task />
+         | ["graphql"] => <GraphqlDemo />
          | _ => <Start />
          }}
       </div>
