@@ -90,6 +90,7 @@
         cursor: default;
       }
       button {
+        align-self: flex-end;
         outline: 0;
         display: block;
         border: 0;
@@ -115,9 +116,6 @@
         background-color: #f9f6f5;
         padding: 8px 15px;
         font-family: "Montserrat", sans-serif;
-      }
-      .task-container button {
-        align-self: flex-end;
       }
       button:hover {
         background-color: #e6e6e6;
@@ -146,7 +144,7 @@
         border-color: #63b3ed;
         background-color: #fff;
       }
-      input {
+      input[type="text"] {
         width: 100%;
         color: black;
         line-height: 1.25;
@@ -163,28 +161,32 @@
       }
       .search-input {
         margin-right: 30px;
+        flex: 1 1 auto;
       }
       .search-form {
         display: flex;
         margin-bottom: 30px;
-        width: 100%;
+        width: 600px;
         justify-content: center;
       }
       .search-form button {
         align-self: center;
       }
       .search-results {
+        align-self: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-size: 18px;
         line-height: 2;
+        width: 600px;
       }
       .search-result {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
       }
       .repo-stars {
         font-size: 24px;
@@ -197,6 +199,16 @@
         width: 32px;
         display: inline-block;
         height: 32px;
+      }
+      .delimiter {
+        display: block;
+        margin: 0 15px;
+      }
+      .repo-desc {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.5;
+        text-align: center;
       }
     </style>
   </head>
