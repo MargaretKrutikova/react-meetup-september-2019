@@ -1,3 +1,7 @@
+open Router;
+
+let str = React.string;
+
 [@react.component]
 let make = () => {
   let url = ReasonReactRouter.useUrl();
@@ -5,10 +9,11 @@ let make = () => {
 
   <>
     <header>
-      <a href="/basic" className="nav-link"> {React.string("Basic")} </a>
-      <a href="/state" className="nav-link"> {React.string("State")} </a>
-      <a href="/reducer" className="nav-link"> {React.string("Reducer")} </a>
-      <a href="/interop" className="nav-link"> {React.string("Interop")} </a>
+      <NavLink href="/"> {str("Home")} </NavLink>
+      <NavLink href="/basic"> {str("Basic")} </NavLink>
+      <NavLink href="/state"> {str("State")} </NavLink>
+      <NavLink href="/reducer"> {str("Reducer")} </NavLink>
+      <NavLink href="/interop"> {str("Interop")} </NavLink>
     </header>
     <main>
       <div className="task-container">
@@ -17,14 +22,7 @@ let make = () => {
          | ["state"] => <TaskState task />
          | ["reducer"] => <TaskReducer task />
          | ["interop"] => <TaskInterop task />
-         | _ =>
-           <div className="title">
-             {React.string("Demo time")}
-             <img
-               height="50"
-               src="https://assets.change.org/photos/9/ve/yo/BqVEYoWGFrIepAj-800x450-noPad.jpg?1558301066"
-             />
-           </div>
+         | _ => <Start />
          }}
       </div>
     </main>
