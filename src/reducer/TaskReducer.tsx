@@ -34,7 +34,7 @@ const initialState: State = { completedAt: "", isNotified: false }
 
 export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  let { isNotified, completedAt } = state
+  const { isNotified, completedAt } = state
 
   return (
     <>

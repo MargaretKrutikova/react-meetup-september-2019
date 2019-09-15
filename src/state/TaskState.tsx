@@ -6,7 +6,7 @@ type Props = {
 
 export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  let handleToggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
+  const handleToggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
 
   return (
     <>
