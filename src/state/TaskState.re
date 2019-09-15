@@ -15,7 +15,7 @@ let make = (~task) => {
              {str("Task:")}
              <b> {str(task)} </b>
            </div>
-           <button> {React.string("Complete")} </button>
+           <button> {str("Complete")} </button>
          </>
        : React.null}
   </>;

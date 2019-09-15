@@ -21,7 +21,10 @@ type Action =
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "CompleteTask":
-      return { ...state, completedAt: action.date.toLocaleTimeString() }
+      return {
+        ...state,
+        completedAt: action.date.toLocaleTimeString()
+      }
     case "ToggleNotifications":
       return { ...state, isNotified: !state.isNotified }
   }
@@ -31,14 +34,14 @@ const initialState: State = { completedAt: "", isNotified: false }
 
 export const TaskPanel: React.FunctionComponent<Props> = ({ task }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  let { isNotified, completedAt: isCompleted } = state
+  let { isNotified, completedAt } = state
 
   return (
     <>
       <div className="task-row">Task: {task}</div>
       <div className="task-row">
-        Status:
-        {isCompleted ? "Done" : "Open"}
+        Completed:
+        <b> {completedAt} </b>
       </div>
       <div className="task-row">
         <label>
